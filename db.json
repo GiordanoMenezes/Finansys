@@ -1,0 +1,49 @@
+{
+  "categorias": [
+    {
+      "id": 1,
+      "name": "Moradia",
+      "description": "Pagamentos de Contas da Casa"
+    },
+    {
+      "id": 2,
+      "name": "Saúde",
+      "description": "Plano de Saúde e Remédios"
+    },
+    {
+      "id": 4,
+      "name": "Freelancer",
+      "description": "Receitas com sistemas"
+    },
+    {
+      "id": 5,
+      "name": "Supermercado",
+      "description": "Compras em supermercados e mercadinhos"
+    },
+    {
+      "id": 6,
+      "name": "Leandro",
+      "description": "Estuda muito bem"
+    },
+    {
+      "id": 12,
+      "name": "Barcelona",
+      "description": "Contratou CR7"
+    },
+    {
+      "id": 13,
+      "name": "Cesar",
+      "description": "Planeta dos Macacos"
+    },
+    {
+      "id": 14,
+      "name": "Solarity",
+      "description": "Renove bem"
+    },
+    {
+      "id": 15,
+      "name": "Celular",
+      "description": "Samsung A30"
+    }
+  ]
+}

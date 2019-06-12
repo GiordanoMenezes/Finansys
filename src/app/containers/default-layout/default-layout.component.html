@@ -1,10 +1,7 @@
-<app-header
-  [navbarBrandRouterLink]="['/dashboard']"
-  [fixed]="true"
+<app-header [navbarBrandRouterLink]="['/dashboard']" [fixed]="true"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
-  [sidebarToggler]="'lg'"
-  [asideMenuToggler] = false
-  [navbarBrandFull] = "{src: 'assets/img/brand/finlogo.svg', width: 110, height: 110, alt: 'CoreUI Logo'}">
+  [sidebarToggler]="'lg'" [asideMenuToggler]=false
+  [navbarBrandFull]="{src: 'assets/img/brand/finlogo.svg', width: 110, height: 110, alt: 'CoreUI Logo'}">
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
@@ -19,6 +16,12 @@
   <div class="userheader mr-3">Giordano Menezes</div>
 </app-header>
 <div class="app-body">
+  <p-confirmDialog header="Excluir Registro" icon="fa fa-trash" #dialogo>
+    <p-footer>
+      <button type="button" pButton icon="fa fa-check" label="Sim" (click)="dialogo.accept()"></button>
+      <button type="button" pButton icon="fa fa-times" label="Não" (click)="dialogo.reject()"></button>
+    </p-footer>
+  </p-confirmDialog>
   <app-sidebar [fixed]="true" [display]="'lg'">
     <app-sidebar-nav [navItems]="navItems" [perfectScrollbar] [disabled]="sidebarMinimized"></app-sidebar-nav>
     <app-sidebar-minimizer></app-sidebar-minimizer>
@@ -39,15 +42,15 @@
     </cui-breadcrumb>
     <!-- deprecation warning for 'app-breadcrumb' -->
     <!--<ol class="breadcrumb">-->
-      <!--<app-breadcrumb></app-breadcrumb>-->
-      <!--&lt;!&ndash; Breadcrumb Menu&ndash;&gt;-->
-      <!--<li class="breadcrumb-menu d-md-down-none">-->
-        <!--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">-->
-          <!--<a class="btn" href="#"><i class="icon-speech"></i></a>-->
-          <!--<a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>-->
-          <!--<a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>-->
-        <!--</div>-->
-      <!--</li>-->
+    <!--<app-breadcrumb></app-breadcrumb>-->
+    <!--&lt;!&ndash; Breadcrumb Menu&ndash;&gt;-->
+    <!--<li class="breadcrumb-menu d-md-down-none">-->
+    <!--<div class="btn-group" role="group" aria-label="Button group with nested dropdown">-->
+    <!--<a class="btn" href="#"><i class="icon-speech"></i></a>-->
+    <!--<a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>-->
+    <!--<a class="btn" href="#"><i class="icon-settings"></i> &nbsp;Settings</a>-->
+    <!--</div>-->
+    <!--</li>-->
     <!--</ol>-->
     <div class="container-fluid">
       <router-outlet></router-outlet>

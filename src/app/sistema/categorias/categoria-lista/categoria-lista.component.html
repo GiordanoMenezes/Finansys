@@ -1,49 +1,44 @@
-<div class="row mb-4">
+<div class="row mb-3">
   <div class="col-md">
     <h1 class="h2 border-left pl-2">Categorias</h1>
   </div>
   <div class="col-md">
-    <button class="btn btn-success float-right" routerLink="new">+ Nova Categoria</button>
+    <button class="btn btn-success float-right" routerLink="/categorias/new"><i class="mr-2 fa fa-plus-square"></i>Nova
+      Categoria</button>
   </div>
 </div>
-
 <table class="table table-hover">
+  <p-blockUI [blocked]="blockedDocument">
+    <i class="fa fa-spin fa-cog fa-5x" style="position:absolute;top:25%;left:50%"></i>
+  </p-blockUI>
   <thead>
-    <tr class="text-light" style="background-color: #4994e4;">
+    <tr class="text-light" style="background-color: #529cf3">
       <th>Categoria</th>
       <th>Ações</th>
     </tr>
   </thead>
+  <!-- <tbody *ngIf="categorias | async as categs; else loadingorError"> -->
   <tbody>
-    <tr>
+    <tr *ngFor="let categ of categorias ">
       <td>
-        <strong>Lazer</strong><br>
-        <small>Cinema, parque, praia, etc</small>
+        <strong>{{categ.name}}</strong><br>
+        <small>{{categ.description}}</small>
       </td>
       <td>
-        <a [routerLink]="['edit',12]" class="btn btn-info btn-sm mr-2">Editar</a>
-        <button (click)="alert('Excluído com sucesso!')" class="btn btn-danger btn-sm">Excluir</button>
+        <a [routerLink]="['/categorias/edit',categ.id]" class="btn btn-info btn-sm mr-2">Editar</a>
+        <button (click)="confirmaExclusao(categ)" class="btn btn-danger btn-sm">Excluir</button>
       </td>
     </tr>
-    <tr>
-        <td>
-          <strong>Transporte</strong><br>
-          <small>Combustível, táxi, metrô, etc</small>
-        </td>
-        <td>
-          <a [routerLink]="['edit',12]" class="btn btn-info btn-sm mr-2">Editar</a>
-          <button (click)="alert('Excluído com sucesso!')" class="btn btn-danger btn-sm">Excluir</button>
-        </td>
-      </tr>
-      <tr>
-          <td>
-            <strong>Alimentação</strong><br>
-            <small>Supermercado, padaria, frutas e verduras, etc</small>
-          </td>
-          <td>
-            <a [routerLink]="['edit',12]" class="btn btn-info btn-sm mr-2">Editar</a>
-            <button (click)="alert('Excluído com sucesso!')" class="btn btn-danger btn-sm">Excluir</button>
-          </td>
-        </tr>
   </tbody>
 </table>
+<!-- <ng-template #loadingorError>
+  <div *ngIf="loadingError | async ; else loading">
+    <div class="mt-4">
+     <h5 style="color:#de2626"> Erro de Comunicação com o Servidor. Tente novamente mais tarde.</h5>
+     </div>
+  </div>
+
+  <ng-template #loading>
+    Loading users...
+  </ng-template>
+</ng-template> -->

@@ -1,3 +1,36 @@
-<p>
-  categoria-form works!
-</p>
+<div class="row mb-3">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md">
+    <button class="btn btn-light float-right" routerLink="/categorias"><i class="fa fa-reply mr-2"></i>Voltar</button>
+  </div>
+</div>
+<p-blockUI [blocked]="loading">
+    <i class="fa fa-spin fa-cog fa-5x" style="position:absolute;top:25%;left:50%;z-index:5000;"></i>
+  </p-blockUI>
+<form [formGroup]="formCategoria" (submit)="submitForm()">
+  <div #cardnew class="card">
+    <div class="card-header">
+      Dados Gerais
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="name">Nome</label>
+          <input type="text" id="name" class="form-control" formControlName="name">
+          <div class="text-danger" *ngIf="formCategoria.get('name').invalid && formCategoria.get('name').touched">
+            <div *ngIf="formCategoria.get('name').errors.required">Nome é Obrigatório</div>
+            <div *ngIf="formCategoria.get('name').errors.minlength">Nome deve ter no mínimo 3 caracteres</div>
+          </div>
+        </div>
+        <div class="form-group col-md-8">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" class="form-control" formControlName="description">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary float-right" [disabled]="submittingform || formCategoria.invalid"><i
+      class="fa fa-floppy-o mr-2"></i>Salvar</button>
+</form>

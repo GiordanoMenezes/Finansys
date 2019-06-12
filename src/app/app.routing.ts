@@ -8,7 +8,6 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
 
 export const routes: Routes = [
   {
@@ -38,13 +37,6 @@ export const routes: Routes = [
     }
   },
   {
-    path: 'register',
-    component: RegisterComponent,
-    data: {
-      title: 'Register Page'
-    }
-  },
-  {
     path: '',
     component: DefaultLayoutComponent,
     data: {
@@ -53,7 +45,17 @@ export const routes: Routes = [
     children: [
       {
         path: 'categorias',
+        data: {
+          title: 'Categorias'
+        },
         loadChildren: './sistema/categorias/categorias.module#CategoriasModule'
+      },
+      {
+        path: 'clientes',
+        data: {
+          title: 'Clientes'
+        },
+        loadChildren: './sistema/clientes/clientes.module#ClientesModule'
       },
       {
         path: 'base',

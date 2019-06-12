@@ -54,6 +54,11 @@ export const navItems: NavData[] = [
     icon: 'icon-tag'
   },
   {
+    name: 'Clientes',
+    url: '/clientes',
+    icon: 'icon-user'
+  },
+  {
     title: true,
     name: 'LANÇAMENTOS'
   },

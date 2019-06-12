@@ -1,0 +1,15 @@
+form {
+    font-size:14px;
+}
+
+label {
+  /* font-family: "Open Sans Pro", sans-serif; */
+  font-family: -apple-system, Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  color: #4a5056;
+  margin-bottom: 0.1rem;
+}
+
+input {
+    font-family: Lato,"Open Sans Pro", sans-serif;
+    border-radius: 6px;
+}

@@ -6,3 +6,80 @@
 
 // If you want to add something do it here
 @import "custom";
+
+//Jquery DataTables
+@import "~datatables.net-bs4/css/dataTables.bootstrap4.min.css";
+
+.app-header {
+  background-color: #dfe5ff;
+}
+
+.ui-blockui.ui-widget-overlay {
+  background-color: inherit;
+  opacity: 1;
+}
+
+#tblCliente .pi.pi-spinner:before {
+  content:"\e94a";
+  font-size:2.5em;
+}
+
+.ui-table .ui-table-wrapper thead.ui-table-thead > tr > th {
+  background-color:#529cf3;
+  color: #f0f3f5;
+}
+
+.ui-table .ui-table-wrapper tr {
+  line-height: 2.5rem;
+  color:#23282c;
+}
+
+.ui-table .ui-table-tbody > tr {
+  background-color: #e4e5e6;
+}
+
+div.dataTables_wrapper div.dataTables_filter label, 
+div.dataTables_wrapper div.dataTables_length label,
+div.dataTables_wrapper div.dataTables_info {
+  font-weight: 500;
+  font-size: 0.90rem;
+}
+
+div.dataTables_wrapper div.dataTables_paginate ul.pagination {
+  font-size: 0.78rem;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 600;
+    color:#d04545;
+}
+
+h2, .h2 {
+    font-size:1.60rem;
+}
+
+.card-header {
+    background-color: #529cf3;
+    color: #f2f2f2;
+    font-size: 0.95rem;
+}
+
+input.form-control {
+  border-color: #d1d3d6;
+}
+
+.btn {
+    font-family: "Titillium Web", sans-serif;
+    font-weight: 500;
+}
+
+ button.btn.btn-danger {
+//   color: #eadfdf;
+  color: #fff;
+}
+
+button.btn.btn-success {
+    color: #fff;
+}
+
