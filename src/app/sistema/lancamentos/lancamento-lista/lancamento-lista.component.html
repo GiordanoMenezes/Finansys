@@ -1,0 +1,52 @@
+<div class="row mb-3">
+  <div class="col-md">
+    <h1 class="h2 border-left">Lançamentos</h1>
+  </div>
+  <div class="col-md">
+    <button class="btn btn-success float-right" routerLink="/lancamentos/new"><i class="mr-2 fa fa-plus-square"></i>Novo
+      Lançamento</button>
+  </div>
+</div>
+<table class="table table-hover">
+  <p-blockUI [blocked]="blockedDocument">
+    <i class="fa fa-spin fa-cog fa-5x" style="position:absolute;top:25%;left:50%"></i>
+  </p-blockUI>
+  <thead>
+    <tr>
+      <th>Lançamento</th>
+      <th>Categoria</th>
+      <th class="text-right">Valor</th>
+      <th class="text-center">Ações</th>
+    </tr>
+  </thead>
+  <!-- <tbody *ngIf="categorias | async as categs; else loadingorError"> -->
+  <tbody>
+    <tr *ngFor="let lanc of lancamentos ">
+      <td>
+        <strong>{{lanc.nome}}</strong><br>
+        <small class="text-success"><strong>{{lanc.data}}</strong></small><br/>
+        <small *ngIf="lanc.descricao">{{lanc.descricao}}</small>
+      </td>
+      <td><small>{{lanc.categoria.name}}</small></td>
+      <td [class.text-success]="lanc.tipo == 'REC'" [class.text-danger]="lanc.tipo == 'DESP'" class="text-right">
+        <small><strong>{{lanc.valor | currency: 'BRL' : true : localePt}}</strong></small><br/>
+        <div class="badge badge-light">{{lanc.pagoText}}</div>
+      </td>
+      <td class="text-center">
+        <a [routerLink]="['/lancamentos/edit',lanc.id]" class="btn btn-info btn-sm mr-2">Editar</a>
+        <button (click)="confirmaExclusao(lanc)" class="btn btn-danger btn-sm">Excluir</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<!-- <ng-template #loadingorError>
+  <div *ngIf="loadingError | async ; else loading">
+    <div class="mt-4">
+     <h5 style="color:#de2626"> Erro de Comunicação com o Servidor. Tente novamente mais tarde.</h5>
+     </div>
+  </div>
+
+  <ng-template #loading>
+    Loading users...
+  </ng-template>
+</ng-template> -->

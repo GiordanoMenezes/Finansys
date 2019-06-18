@@ -1,6 +1,6 @@
 <div class="row mb-3">
   <div class="col-md">
-    <h1 class="h2 border-left pl-2">Clientes</h1>
+    <h1 class="h2 border-left">Clientes</h1>
   </div>
   <div class="col-md">
     <button class="btn btn-success float-right" routerLink="/clientes/new"><i class="mr-2 fa fa-plus-square"></i>Novo
@@ -21,10 +21,10 @@
   </ng-template>
   <ng-template pTemplate="body" let-p>
     <tr>
-      <td><small>{{p.firstName}} {{p.lastName}}</small></td>
-      <td class="ui-p-2"><small>{{p.company}}</small></td>
-      <td class="ui-p-4"><small>{{p.email}}</small></td>
-      <td class="ui-p-6"><small>{{p.city}}</small></td>
+      <td>{{p.firstName}} {{p.lastName}}</td>
+      <td class="ui-p-2">{{p.company}}</td>
+      <td class="ui-p-4">{{p.email}}</td>
+      <td class="ui-p-6">{{p.city}}</td>
       <td>
         <a [routerLink]="['/cliente/edit',p.id]" class="btn btn-info btn-sm mr-2">Editar</a>
         <button (click)="confirmaExclusao(p)" class="btn btn-danger btn-sm">Excluir</button>

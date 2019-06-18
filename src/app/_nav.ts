@@ -60,8 +60,13 @@ export const navItems: NavData[] = [
   },
   {
     title: true,
-    name: 'LANÇAMENTOS'
+    name: 'OPERAÇÕES'
   },
+  {
+    name: 'Lançamentos',
+    url: '/lancamentos',
+    icon: 'icon-note'
+  }
   // {
   //   name: 'Base',
   //   url: '/base',

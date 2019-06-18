@@ -58,6 +58,13 @@ export const routes: Routes = [
         loadChildren: './sistema/clientes/clientes.module#ClientesModule'
       },
       {
+        path: 'lancamentos',
+        data: {
+          title: 'Lançamentos'
+        },
+        loadChildren: './sistema/lancamentos/lancamento.module#LancamentoModule'
+      },
+      {
         path: 'base',
         loadChildren: './views/base/base.module#BaseModule'
       },

@@ -12,6 +12,10 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true
 };
 
+import {LOCALE_ID} from '@angular/core';
+import localePt from '@angular/common/locales/pt';
+import {registerLocaleData} from '@angular/common';
+
 import { AppComponent } from './app.component';
 
 // Import containers
@@ -45,6 +49,9 @@ import { ConfirmationService } from 'primeng/api';
 
 import {ToastrModule} from 'ngx-toastr';
 
+registerLocaleData(localePt);
+
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -62,6 +69,7 @@ import {ToastrModule} from 'ngx-toastr';
     ChartsModule,
     ConfirmDialogModule,
     ToastrModule.forRoot()
+
   ],
   declarations: [
     AppComponent,
@@ -74,7 +82,8 @@ import {ToastrModule} from 'ngx-toastr';
     provide: LocationStrategy,
     useClass: HashLocationStrategy
   },
-    ConfirmationService
+    ConfirmationService,
+    {provide: LOCALE_ID, useValue: 'pt'}
   ],
   bootstrap: [AppComponent]
 })

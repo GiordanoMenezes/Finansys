@@ -1,0 +1,97 @@
+<div class="row mb-2">
+  <div class="col-md">
+    <h1 class="h2 border-left pl-2">{{pageTitle}}</h1>
+  </div>
+  <div class="col-md">
+    <button class="btn btn-light float-right" routerLink="/lancamentos"><i class="fa fa-reply mr-2"></i>Voltar</button>
+  </div>
+</div>
+<p-blockUI [blocked]="loading">
+  <i class="fa fa-spin fa-cog fa-5x" style="position:absolute;top:25%;left:50%;"></i>
+</p-blockUI>
+<form [formGroup]="formLancamento" (submit)="submitForm()">
+  <div #cardnew class="card">
+    <div class="card-header">
+      Dados Gerais
+    </div>
+    <div class="card-body">
+      <div class="form-row">
+        <!-- Campo Data -->
+        <div class="form-group col-md-2">
+          <label for="data">Data</label>
+          <p-calendar id="data" formControlName="data" inputStyleClass="form-control" dataType="string"
+            dateFormat="dd/mm/yy" [locale]="ptBrasil"></p-calendar>
+          <div class="text-danger" *ngIf="formLancamento.get('data').invalid && formLancamento.get('data').touched">
+            <div *ngIf="formLancamento.get('data').errors.required">Data é Obrigatória</div>
+          </div>
+        </div>
+        <!-- Campo Tipo -->
+        <div class="form-group col-md-2">
+          <label for="tipo">Tipo</label>
+          <select id="tipo" name="tipo" class="form-control" formControlName="tipo" >
+              <option *ngFor="let opt of optionsTipos" [value]="opt.value">{{opt.text}}</option>
+          </select>
+          <div class="text-danger" *ngIf="formLancamento.get('tipo').invalid && formLancamento.get('tipo').touched">
+            <div *ngIf="formLancamento.get('tipo').errors.required">Tipo é Obrigatório</div>
+          </div>
+        </div>
+        <!-- Campo Nome -->
+        <div class="form-group col-md-5">
+          <label for="nome">Lançamento</label>
+          <input type="text" id="nome" class="form-control" formControlName="nome">
+          <div class="text-danger" *ngIf="formLancamento.get('nome').invalid && formLancamento.get('nome').touched">
+            <div *ngIf="formLancamento.get('nome').errors.required">Nome é Obrigatório</div>
+            <div *ngIf="formLancamento.get('nome').errors.minlength">Nome deve ter no mínimo 3 caracteres</div>
+          </div>
+        </div>
+        <!-- Campo Valor -->
+        <div class="form-group col-md-3">
+          <label for="valor">Valor</label>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">R$</div>
+            </div>
+            <input type="text" id="valor" currencyMask id="valor" class="form-control text-right" formControlName="valor"
+              [options]="{ prefix: '', thousands: '.', decimal: ',' }">
+          </div>
+          <div class="text-danger" *ngIf="formLancamento.get('valor').invalid && formLancamento.get('valor').touched">
+            <div *ngIf="formLancamento.get('valor').errors.required">Valor é Obrigatório</div>
+            <div *ngIf="formLancamento.get('valor').errors.min">Valor deve ser positivo.</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <!-- Campo Pago -->
+        <div class="form-group col-md-2">
+          <label style="display: block;" for="pago">Pago</label>
+          <div class="btn-group">
+            <label class="btn btn-outline-info" (click)="formLancamento.get('pago').setValue(true)"
+             [class.active]="formLancamento.get('pago').value == true">Pago</label>
+            <label class="btn btn-outline-info" (click)="formLancamento.get('pago').setValue(false)"
+            [class.active]="formLancamento.get('pago').value == false">Pendente</label>
+          </div>
+          <div class="text-danger" *ngIf="formLancamento.get('pago').invalid && formLancamento.get('pago').touched">
+            <div *ngIf="formLancamento.get('pago').errors.required">Dado Obrigatório</div>
+          </div>
+        </div>
+        <!-- Campo Categoria -->
+        <div class="form-group col-md-2" formGroupName="categoria">
+            <label for="categ">Categoria</label>
+            <select id="categ" name="categ" class="form-control" formControlName="id" (change)="mudaCategoria($event)">
+             <option *ngFor="let opt of optionsCategoria" [value]='opt.id'>{{opt.name}}</option>
+            </select>
+            <div class="text-danger" *ngIf="formLancamento.get('categoria').get('id').invalid && formLancamento.get('categoria').get('id').touched">
+              <div *ngIf="formLancamento.get('categoria').get('id').errors.required">Categoria é Obrigatório</div>
+            </div>
+          </div>
+        <!-- Campo Descrição -->
+        <div class="form-group col-md-8">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" class="form-control" formControlName="descricao">
+        </div>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary float-right" [disabled]="submittingform || formLancamento.invalid"><i
+      class="fa fa-floppy-o mr-2"></i>Salvar</button>
+</form>

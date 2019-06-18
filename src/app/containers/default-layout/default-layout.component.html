@@ -18,8 +18,8 @@
 <div class="app-body">
   <p-confirmDialog header="Excluir Registro" icon="fa fa-trash" #dialogo>
     <p-footer>
-      <button type="button" pButton icon="fa fa-check" label="Sim" (click)="dialogo.accept()"></button>
-      <button type="button" pButton icon="fa fa-times" label="Não" (click)="dialogo.reject()"></button>
+      <button type="button" class="btn btn-primary" pButton icon="fa fa-check" label="Sim" (click)="dialogo.accept()"></button>
+      <button type="button" class="btn btn-danger" pButton icon="fa fa-times" label="Não" (click)="dialogo.reject()"></button>
     </p-footer>
   </p-confirmDialog>
   <app-sidebar [fixed]="true" [display]="'lg'">
