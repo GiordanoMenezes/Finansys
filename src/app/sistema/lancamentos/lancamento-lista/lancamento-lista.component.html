@@ -1,8 +1,8 @@
 <div class="row mb-3">
-  <div class="col-md">
-    <h1 class="h2 border-left">Lançamentos</h1>
+  <div class="col-md-9 col-sm-8 col-7">
+    <h1 class="h2">Lançamentos</h1>
   </div>
-  <div class="col-md">
+  <div class="col-md-3 col-sm-4 col-5">
     <button class="btn btn-success float-right" routerLink="/lancamentos/new"><i class="mr-2 fa fa-plus-square"></i>Novo
       Lançamento</button>
   </div>
@@ -29,7 +29,7 @@
       </td>
       <td><small>{{lanc.categoria.name}}</small></td>
       <td [class.text-success]="lanc.tipo == 'REC'" [class.text-danger]="lanc.tipo == 'DESP'" class="text-right">
-        <small><strong>{{lanc.valor | currency: 'BRL' : true : localePt}}</strong></small><br/>
+        <small><strong>{{lanc.valor | currency: 'BRL' : 'symbol' : localePt}}</strong></small><br/>
         <div class="badge badge-light">{{lanc.pagoText}}</div>
       </td>
       <td class="text-center">
